@@ -1,0 +1,123 @@
+{
+  "success": false,
+  "error": null,
+  "steps": [
+    {
+      "step": 1,
+      "success": true,
+      "action": {
+        "action_type": "wait",
+        "description": "等待应用加载完成",
+        "text": "",
+        "swipe_direction": "",
+        "wait_time": 2,
+        "reasoning": "当前截图显示QQ音乐首页，但尚未打开应用，需等待以确保应用完全启动。",
+        "success": true,
+        "screenshot_path": "screenshots\\QQ_step_1_before_1759681601.png"
+      },
+      "screenshot": "screenshots\\QQ_step_1_before_1759681601.png",
+      "duration": 7.415270090103149
+    },
+    {
+      "step": 2,
+      "success": true,
+      "action": {
+        "action_type": "click",
+        "description": "点击底部导航栏中带有放大镜图标的搜索按钮",
+        "reasoning": "根据测试步骤，当前需要点击搜索入口。截图显示底部导航栏中有一个放大镜图标，通常代表搜索功能，因此该图标是点击目标。",
+        "success": true,
+        "screenshot_path": "screenshots\\QQ_step_2_before_1759681609.png"
+      },
+      "screenshot": "screenshots\\QQ_step_2_before_1759681609.png",
+      "duration": 9.263875961303711
+    },
+    {
+      "step": 3,
+      "success": true,
+      "action": {
+        "action_type": "input",
+        "description": "点击搜索框准备输入歌曲名称",
+        "text": "北京欢迎你",
+        "reasoning": "当前步骤是第3步，需要在搜索框中输入指定的查询文本“北京欢迎你”以进行搜索。",
+        "success": true,
+        "screenshot_path": "screenshots\\QQ_step_3_before_1759681619.png"
+      },
+      "screenshot": "screenshots\\QQ_step_3_before_1759681619.png",
+      "duration": 12.576034545898438
+    },
+    {
+      "step": 4,
+      "success": true,
+      "action": {
+        "action_type": "click",
+        "description": "点击键盘右下角的“确认”按钮以提交搜索",
+        "reasoning": "当前界面显示已输入搜索词“be”，需通过点击“确认”按钮完成搜索提交，进入下一步加载搜索结果。",
+        "success": true,
+        "screenshot_path": "screenshots\\QQ_step_4_before_1759681633.png"
+      },
+      "screenshot": "screenshots\\QQ_step_4_before_1759681633.png",
+      "duration": 5.500401973724365
+    },
+    {
+      "step": 5,
+      "success": true,
+      "action": {
+        "action_type": "wait",
+        "description": "等待搜索结果加载完成",
+        "text": "",
+        "swipe_direction": "",
+        "wait_time": 3,
+        "reasoning": "当前截图显示搜索结果已加载，但需要等待以确保所有内容完全呈现，以便进行下一步验证。",
+        "success": true,
+        "screenshot_path": "screenshots\\QQ_step_5_before_1759681640.png"
+      },
+      "screenshot": "screenshots\\QQ_step_5_before_1759681640.png",
+      "duration": 5.803010940551758
+    },
+    {
+      "step": 6,
+      "success": true,
+      "action": {
+        "action_type": "wait",
+        "wait_time": 3,
+        "reasoning": "等待搜索结果加载完成以验证歌曲《北京欢迎你》是否出现",
+        "success": true,
+        "description": "",
+        "screenshot_path": "screenshots\\QQ_step_6_before_1759681646.png"
+      },
+      "screenshot": "screenshots\\QQ_step_6_before_1759681646.png",
+      "duration": 5.2157511711120605
+    }
+  ],
+  "final_check": {
+    "success": false,
+    "error": null,
+    "screenshot": "screenshots\\QQ_step_7_final_1759681653.png",
+    "analysis": ""
+  },
+  "test_name": "QQ音乐搜索《北京欢迎你》",
+  "total_steps": 6,
+  "device_info": {
+    "device_id": "VEG0220519034524",
+    "screen_size": [
+      1080,
+      2340
+    ],
+    "width": 1080,
+    "height": 2340,
+    "current_activity": null,
+    "operation_delay": 1.0,
+    "connection_timeout": 10,
+    "resize_ratio": 1.0,
+    "rotate_angle": 0
+  },
+  "config": {
+    "max_steps": 6,
+    "step_timeout": 30,
+    "screenshot_interval": 1,
+    "retry_count": 3,
+    "screenshots_dir": "screenshots",
+    "reports_dir": "reports"
+  },
+  "timestamp": 1759681657
+}

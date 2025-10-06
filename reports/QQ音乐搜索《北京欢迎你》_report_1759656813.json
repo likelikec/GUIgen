@@ -1,0 +1,147 @@
+{
+  "success": false,
+  "error": "所有步骤都失败了",
+  "steps": [
+    {
+      "step": 1,
+      "success": false,
+      "action": {
+        "action": "click",
+        "target": "乐馆"
+      },
+      "screenshot": "screenshots\\QQ音乐搜索《北京欢迎你》_step_1_before_1759656703.png",
+      "duration": 8.151625871658325,
+      "error": "操作执行失败"
+    },
+    {
+      "step": 2,
+      "success": false,
+      "action": {
+        "action": "click",
+        "target": "乐馆"
+      },
+      "screenshot": "screenshots\\QQ音乐搜索《北京欢迎你》_step_2_before_1759656712.png",
+      "duration": 7.65993857383728,
+      "error": "操作执行失败"
+    },
+    {
+      "step": 3,
+      "success": false,
+      "action": {
+        "action": "click",
+        "target": "乐馆"
+      },
+      "screenshot": "screenshots\\QQ音乐搜索《北京欢迎你》_step_3_before_1759656721.png",
+      "duration": 7.671321630477905,
+      "error": "操作执行失败"
+    },
+    {
+      "step": 4,
+      "success": false,
+      "action": {
+        "action": "click",
+        "element": "乐馆"
+      },
+      "screenshot": "screenshots\\QQ音乐搜索《北京欢迎你》_step_4_before_1759656730.png",
+      "duration": 9.919888734817505,
+      "error": "操作执行失败"
+    },
+    {
+      "step": 5,
+      "success": false,
+      "action": {
+        "action": "click",
+        "target": "乐馆"
+      },
+      "screenshot": "screenshots\\QQ音乐搜索《北京欢迎你》_step_5_before_1759656741.png",
+      "duration": 10.123941421508789,
+      "error": "操作执行失败"
+    },
+    {
+      "step": 6,
+      "success": false,
+      "action": {
+        "action": "click",
+        "target": "乐馆"
+      },
+      "screenshot": "screenshots\\QQ音乐搜索《北京欢迎你》_step_6_before_1759656752.png",
+      "duration": 5.538405418395996,
+      "error": "操作执行失败"
+    },
+    {
+      "step": 7,
+      "success": false,
+      "action": {
+        "action": "click",
+        "target": "乐馆"
+      },
+      "screenshot": "screenshots\\QQ音乐搜索《北京欢迎你》_step_7_before_1759656758.png",
+      "duration": 7.53444766998291,
+      "error": "操作执行失败"
+    },
+    {
+      "step": 8,
+      "success": false,
+      "action": {
+        "action": "click",
+        "target": "乐馆"
+      },
+      "screenshot": "screenshots\\QQ音乐搜索《北京欢迎你》_step_8_before_1759656767.png",
+      "duration": 18.457290410995483,
+      "error": "操作执行失败"
+    },
+    {
+      "step": 9,
+      "success": false,
+      "action": {
+        "action": "click",
+        "target": "乐馆"
+      },
+      "screenshot": "screenshots\\QQ音乐搜索《北京欢迎你》_step_9_before_1759656786.png",
+      "duration": 6.953587532043457,
+      "error": "操作执行失败"
+    },
+    {
+      "step": 10,
+      "success": false,
+      "action": {
+        "action": "click",
+        "target": "乐馆"
+      },
+      "screenshot": "screenshots\\QQ音乐搜索《北京欢迎你》_step_10_before_1759656794.png",
+      "duration": 5.594285726547241,
+      "error": "操作执行失败"
+    }
+  ],
+  "final_check": {
+    "success": false,
+    "error": null,
+    "screenshot": "screenshots\\QQ音乐搜索《北京欢迎你》_step_11_final_1759656801.png",
+    "analysis": ""
+  },
+  "test_name": "QQ音乐搜索《北京欢迎你》",
+  "total_steps": 10,
+  "device_info": {
+    "device_id": "23E0223916038147",
+    "screen_size": [
+      1260,
+      2720
+    ],
+    "width": 1260,
+    "height": 2720,
+    "current_activity": null,
+    "operation_delay": 1.0,
+    "connection_timeout": 10,
+    "resize_ratio": 1.0,
+    "rotate_angle": 0
+  },
+  "config": {
+    "max_steps": 10,
+    "step_timeout": 30,
+    "screenshot_interval": 1,
+    "retry_count": 3,
+    "screenshots_dir": "screenshots",
+    "reports_dir": "reports"
+  },
+  "timestamp": 1759656813
+}

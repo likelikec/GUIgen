@@ -1,0 +1,24 @@
+[
+  {
+    "action_type": "click",
+    "description": "绿色背景、两个白色对话气泡图标的微信应用",
+    "success": true
+  },
+  {
+    "action": "input",
+    "text": "王力宏勋章",
+    "action_type": "input",
+    "description": "",
+    "success": true
+  },
+  {
+    "action_type": "click",
+    "description": "单曲: 北京欢迎你 华语群星",
+    "success": true
+  },
+  {
+    "action_type": "click",
+    "description": "点击第一首歌曲“北京欢迎你”，由华语群星演唱，带有VIP、臻品母带和原唱标签",
+    "success": true
+  }
+]

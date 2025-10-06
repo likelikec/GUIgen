@@ -1,0 +1,61 @@
+{
+  "success": false,
+  "error": "所有步骤都失败了",
+  "steps": [
+    {
+      "step": 1,
+      "success": false,
+      "action": {
+        "action": "click",
+        "target": "乐馆",
+        "action_type": "click",
+        "description": "乐馆",
+        "coordinates": [],
+        "reasoning": "LLM未提供有效点击坐标，改为文本查找回退",
+        "success": false
+      },
+      "screenshot": "screenshots\\QQ音乐搜索《北京欢迎你》_step_1_before_1759658214.png",
+      "duration": 32.048523902893066,
+      "error": "操作执行失败"
+    },
+    {
+      "step": 2,
+      "success": false,
+      "error": "步骤执行超时",
+      "action": null,
+      "screenshot": null,
+      "duration": 30
+    }
+  ],
+  "final_check": {
+    "success": false,
+    "error": null,
+    "screenshot": "screenshots\\QQ音乐搜索《北京欢迎你》_step_2_final_1759658247.png",
+    "analysis": ""
+  },
+  "test_name": "QQ音乐搜索《北京欢迎你》",
+  "total_steps": 2,
+  "device_info": {
+    "device_id": "23E0223916038147",
+    "screen_size": [
+      1260,
+      2720
+    ],
+    "width": 1260,
+    "height": 2720,
+    "current_activity": null,
+    "operation_delay": 1.0,
+    "connection_timeout": 10,
+    "resize_ratio": 1.0,
+    "rotate_angle": 0
+  },
+  "config": {
+    "max_steps": 5,
+    "step_timeout": 30,
+    "screenshot_interval": 1,
+    "retry_count": 3,
+    "screenshots_dir": "screenshots",
+    "reports_dir": "reports"
+  },
+  "timestamp": 1759658258
+}

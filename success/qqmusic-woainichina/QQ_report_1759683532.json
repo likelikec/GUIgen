@@ -1,0 +1,117 @@
+{
+  "success": true,
+  "error": null,
+  "steps": [
+    {
+      "step": 1,
+      "success": true,
+      "action": {
+        "action_type": "click",
+        "description": "点击底部导航栏中带有放大镜图标的搜索按钮",
+        "reasoning": "为了实现测试目标，需进入搜索功能界面以查找歌曲《我爱你中国》，当前界面为推荐页面，点击搜索图标是进入搜索功能的必要操作。",
+        "success": true,
+        "screenshot_path": "screenshots\\QQ_step_1_before_1759683475.png"
+      },
+      "screenshot": "screenshots\\QQ_step_1_before_1759683475.png",
+      "duration": 7.444699287414551
+    },
+    {
+      "step": 2,
+      "success": true,
+      "action": {
+        "action_type": "click",
+        "description": "点击屏幕顶部中央的搜索栏（放大镜图标旁区域）",
+        "reasoning": "当前界面为推荐页面，需点击搜索栏以进入搜索功能，输入歌曲名称《我爱你中国》进行验证",
+        "success": true,
+        "screenshot_path": "screenshots\\QQ_step_2_before_1759683484.png"
+      },
+      "screenshot": "screenshots\\QQ_step_2_before_1759683484.png",
+      "duration": 6.884222745895386
+    },
+    {
+      "step": 3,
+      "success": true,
+      "action": {
+        "action_type": "input",
+        "description": "点击屏幕顶部中央的搜索栏（放大镜图标旁区域）",
+        "text": "我爱你中国",
+        "reasoning": "根据测试目标，需要在搜索栏中输入歌曲名称进行搜索验证",
+        "success": true,
+        "screenshot_path": "screenshots\\QQ_step_3_before_1759683492.png"
+      },
+      "screenshot": "screenshots\\QQ_step_3_before_1759683492.png",
+      "duration": 13.08763313293457
+    },
+    {
+      "step": 4,
+      "success": true,
+      "action": {
+        "action_type": "input",
+        "description": "在搜索栏中输入歌曲名称",
+        "text": "我爱你中国",
+        "reasoning": "当前已进入搜索界面，需输入目标歌曲名称以验证搜索功能",
+        "success": true,
+        "screenshot_path": "screenshots\\QQ_step_4_before_1759683506.png"
+      },
+      "screenshot": "screenshots\\QQ_step_4_before_1759683506.png",
+      "duration": 12.185998439788818
+    },
+    {
+      "step": 5,
+      "success": true,
+      "action": {
+        "action_type": "click",
+        "description": "点击搜索栏右侧的 'X' 清除按钮",
+        "reasoning": "清除当前搜索内容，以便重新输入或验证搜索功能的清理操作",
+        "success": true,
+        "screenshot_path": "screenshots\\QQ_step_5_before_1759683519.png"
+      },
+      "screenshot": "screenshots\\QQ_step_5_before_1759683519.png",
+      "duration": 6.244916200637817
+    },
+    {
+      "step": 6,
+      "success": true,
+      "action": {
+        "action_type": "complete",
+        "description": "搜索结果已显示歌曲《我爱你中国》，验证成功",
+        "reasoning": "当前截图中已显示搜索关键词“我爱你中国”的相关歌曲列表，且包含目标歌曲《我爱你中国 (Live)》，说明搜索功能正常工作并返回了正确结果。",
+        "success": true,
+        "screenshot_path": "screenshots\\QQ_step_6_before_1759683526.png"
+      },
+      "screenshot": "screenshots\\QQ_step_6_before_1759683526.png",
+      "duration": 2.864313840866089
+    }
+  ],
+  "final_check": {
+    "success": true,
+    "error": null,
+    "screenshot": "screenshots\\QQ_step_7_final_1759683529.png",
+    "analysis": ""
+  },
+  "test_name": "QQ音乐搜索传奇",
+  "total_steps": 6,
+  "device_info": {
+    "device_id": "VEG0220519034524",
+    "screen_size": [
+      1080,
+      2340
+    ],
+    "width": 1080,
+    "height": 2340,
+    "current_activity": null,
+    "operation_delay": 1.0,
+    "connection_timeout": 10,
+    "resize_ratio": 1.0,
+    "rotate_angle": 0
+  },
+  "config": {
+    "max_steps": 10,
+    "step_timeout": 30,
+    "screenshot_interval": 1,
+    "retry_count": 3,
+    "screenshots_dir": "screenshots",
+    "reports_dir": "reports"
+  },
+  "timestamp": 1759683532
+}

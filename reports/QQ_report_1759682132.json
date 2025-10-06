@@ -1,0 +1,167 @@
+{
+  "success": false,
+  "error": null,
+  "steps": [
+    {
+      "step": 1,
+      "success": true,
+      "action": {
+        "action_type": "click",
+        "description": "点击右上角的“跳过”按钮以关闭广告",
+        "reasoning": "当前界面为广告展示，点击“跳过”可快速跳过广告，进入应用主流程，符合测试目标。",
+        "success": true,
+        "screenshot_path": "screenshots\\QQ_step_1_before_1759682046.png"
+      },
+      "screenshot": "screenshots\\QQ_step_1_before_1759682046.png",
+      "duration": 8.487268209457397
+    },
+    {
+      "step": 2,
+      "success": true,
+      "action": {
+        "action_type": "click",
+        "description": "点击底部导航栏中带有放大镜图标的“搜索”按钮",
+        "reasoning": "当前界面为音乐推荐页面，点击“搜索”图标可进入搜索功能，符合测试目标的下一步操作逻辑。",
+        "success": true,
+        "screenshot_path": "screenshots\\QQ_step_2_before_1759682055.png"
+      },
+      "screenshot": "screenshots\\QQ_step_2_before_1759682055.png",
+      "duration": 8.226392984390259
+    },
+    {
+      "step": 3,
+      "success": true,
+      "action": {
+        "action_type": "click",
+        "description": "点击当前播放器区域的暂停图标（中间的双竖线）以暂停音乐播放。",
+        "reasoning": "当前音乐正在播放，点击暂停图标可以验证播放控制功能是否正常。",
+        "success": true,
+        "screenshot_path": "screenshots\\QQ_step_3_before_1759682064.png"
+      },
+      "screenshot": "screenshots\\QQ_step_3_before_1759682064.png",
+      "duration": 6.757476806640625
+    },
+    {
+      "step": 4,
+      "success": true,
+      "action": {
+        "action_type": "click",
+        "description": "点击播放按钮以开始播放音乐",
+        "reasoning": "当前音乐处于暂停状态，点击播放按钮可以继续播放音乐。",
+        "success": true,
+        "screenshot_path": "screenshots\\QQ_step_4_before_1759682072.png"
+      },
+      "screenshot": "screenshots\\QQ_step_4_before_1759682072.png",
+      "duration": 6.979125499725342
+    },
+    {
+      "step": 5,
+      "success": true,
+      "action": {
+        "action_type": "click",
+        "description": "点击当前播放器区域的暂停图标（中间的双竖线）以暂停音乐播放",
+        "reasoning": "当前音乐正在播放，点击暂停图标可验证暂停功能是否正常。",
+        "success": true,
+        "screenshot_path": "screenshots\\QQ_step_5_before_1759682080.png"
+      },
+      "screenshot": "screenshots\\QQ_step_5_before_1759682080.png",
+      "duration": 6.595499277114868
+    },
+    {
+      "step": 6,
+      "success": true,
+      "action": {
+        "action_type": "click",
+        "description": "点击播放器区域中央的暂停图标（圆形内含两条竖线）以暂停音乐播放",
+        "reasoning": "当前音乐正在播放，根据测试目标需要对播放状态进行操作验证，点击暂停图标符合预期操作。",
+        "success": true,
+        "screenshot_path": "screenshots\\QQ_step_6_before_1759682088.png"
+      },
+      "screenshot": "screenshots\\QQ_step_6_before_1759682088.png",
+      "duration": 6.8401641845703125
+    },
+    {
+      "step": 7,
+      "success": true,
+      "action": {
+        "action_type": "click",
+        "description": "点击播放器区域中央的圆形播放图标以开始播放音乐",
+        "reasoning": "当前界面显示播放器处于暂停状态，播放按钮（圆形内含三角形）清晰可见，点击可恢复音乐播放。",
+        "success": true,
+        "screenshot_path": "screenshots\\QQ_step_7_before_1759682095.png"
+      },
+      "screenshot": "screenshots\\QQ_step_7_before_1759682095.png",
+      "duration": 7.022005081176758
+    },
+    {
+      "step": 8,
+      "success": true,
+      "action": {
+        "action_type": "click",
+        "description": "点击播放器区域中央的暂停图标（圆形内含两条竖线）以暂停音乐播放",
+        "reasoning": "当前音乐正在播放，点击暂停图标可验证播放控制功能是否正常。",
+        "success": true,
+        "screenshot_path": "screenshots\\QQ_step_8_before_1759682103.png"
+      },
+      "screenshot": "screenshots\\QQ_step_8_before_1759682103.png",
+      "duration": 7.5478174686431885
+    },
+    {
+      "step": 9,
+      "success": true,
+      "action": {
+        "action_type": "click",
+        "description": "点击播放器区域中央的圆形播放图标以开始播放音乐",
+        "reasoning": "当前界面显示音乐播放器处于暂停状态，下一步操作应为点击播放图标继续播放。",
+        "success": true,
+        "screenshot_path": "screenshots\\QQ_step_9_before_1759682112.png"
+      },
+      "screenshot": "screenshots\\QQ_step_9_before_1759682112.png",
+      "duration": 6.8111655712127686
+    },
+    {
+      "step": 10,
+      "success": true,
+      "action": {
+        "action_type": "click",
+        "description": "点击播放器区域中央的暂停图标（圆形内含两条竖线）以暂停音乐播放",
+        "reasoning": "当前音乐正在播放，根据测试目标需要验证暂停功能，因此点击暂停图标。",
+        "success": true,
+        "screenshot_path": "screenshots\\QQ_step_10_before_1759682120.png"
+      },
+      "screenshot": "screenshots\\QQ_step_10_before_1759682120.png",
+      "duration": 7.021043062210083
+    }
+  ],
+  "final_check": {
+    "success": false,
+    "error": null,
+    "screenshot": "screenshots\\QQ_step_11_final_1759682128.png",
+    "analysis": ""
+  },
+  "test_name": "QQ音乐搜索传奇",
+  "total_steps": 10,
+  "device_info": {
+    "device_id": "VEG0220519034524",
+    "screen_size": [
+      1080,
+      2340
+    ],
+    "width": 1080,
+    "height": 2340,
+    "current_activity": null,
+    "operation_delay": 1.0,
+    "connection_timeout": 10,
+    "resize_ratio": 1.0,
+    "rotate_angle": 0
+  },
+  "config": {
+    "max_steps": 10,
+    "step_timeout": 30,
+    "screenshot_interval": 1,
+    "retry_count": 3,
+    "screenshots_dir": "screenshots",
+    "reports_dir": "reports"
+  },
+  "timestamp": 1759682132
+}

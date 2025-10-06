@@ -1,0 +1,12 @@
+{
+  "test_id": "qqmusic2_search",
+  "test_name": "QQ音乐搜索北京欢迎你",
+  "description": "在 QQ 音乐中搜索歌曲《北京欢迎你》",
+  "app": {
+    "name": "QQ音乐",
+    "platform": "android"
+  },
+  "test_scenario": {
+    "objective": "打开 QQ 音乐并搜索歌曲《北京欢迎你》"
+  }
+}

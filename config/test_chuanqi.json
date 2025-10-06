@@ -1,0 +1,14 @@
+{
+  "test_name": "QQ音乐搜索传奇",
+  "test_scenario": {
+    "objective": "在QQ音乐应用中搜索歌曲《我爱你中国》，验证搜索功能能够正确找到并显示相关歌曲",
+    "description": "使用搜索功能查找歌曲《我爱你中国》",
+    "search_keyword": "我爱你中国",
+    "expected_result": "成功搜索到歌曲《我爱你中国》并能够点击播放，验证搜索功能正常工作"
+  },
+  "app": {
+    "package": "com.tencent.qqmusic",
+    "launch_activity": ".activity.AppStarterActivity",
+    "name": "QQ音乐"
+  }
+}

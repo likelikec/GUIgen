@@ -1,0 +1,30 @@
+{
+  "test_id": "qqmusic_search_bjhyn_001",
+  "test_name": "QQ音乐搜索《北京欢迎你》",
+  "description": "在QQ音乐中搜索歌曲《北京欢迎你》，并验证搜索结果显示。",
+  "app": {
+    "name": "QQ音乐",
+    "package": "com.tencent.qqmusic",
+    "launch_activity": ".activity.AppStarterActivity"
+  },
+  "test_scenario": {
+    "objective": "在QQ音乐中搜索歌曲《北京欢迎你》",
+    "steps": [
+      "打开QQ音乐应用",
+      "点击搜索入口（首页或底部导航中的搜索）",
+      "在搜索框输入：北京欢迎你",
+      "提交搜索（点击搜索按钮或键盘回车）",
+      "等待加载并查看搜索结果列表",
+      "验证结果中出现歌曲《北京欢迎你》"
+    ],
+    "test_data": {
+      "query": "北京欢迎你"
+    },
+    "expected_result": "搜索结果包含歌曲《北京欢迎你》且可点击进入详情",
+    "success_criteria": [
+      "页面显示搜索结果",
+      "至少有一条结果标题包含‘北京欢迎你’",
+      "无错误弹窗或加载失败提示"
+    ]
+  }
+}

@@ -1,4 +1,4 @@
- # GUIgen: Intelligent Mobile Application Automation Testing Framework Based on Large Language Models
+ # GUIgen: Intelligent Mobile Application Automation Testing Tool Based on Large Language Models
 
 GUIgen is an innovative mobile application automation testing tool that adopts a Vision-Language Model (VLM) driven intelligent decision-making mechanism, achieving end-to-end automated testing processes from natural language test requirements to specific device operations. 
 Through multimodal perception, intelligent reasoning, and precise execution closed-loop feedback mechanisms, this framework significantly improves the intelligence level and execution efficiency of mobile application testing.

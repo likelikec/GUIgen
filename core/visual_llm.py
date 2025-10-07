@@ -14,17 +14,17 @@ from .prompts_visual import (
 
 
 class VisualLLMAnalyzer:
-    """视觉LLM分析器"""
+    """Visual LLM analyzer"""
     
     def __init__(self, llm_interface: LLMInterface):
         """
-        初始化视觉LLM分析器
+        Initialize visual LLM analyzer
         
         Args:
-            llm_interface: LLM接口实例
+            llm_interface: LLM interface instance
         """
         self.llm_interface = llm_interface
-        self.action_history = []  # 操作历史记录
+        self.action_history = []  # Action history record
         
     def analyze_screenshot_for_action(
         self, 
@@ -46,7 +46,7 @@ class VisualLLMAnalyzer:
             操作指令字典
         """
         try:
-            # 构建分析提示：先判断是否提供了步骤信息
+            # Build analysis prompt: first determine if step information is provided
             steps = test_requirement.get("test_scenario", {}).get("steps", [])
             if steps:
                 prompt = build_action_analysis_prompt_with_steps(
@@ -57,7 +57,7 @@ class VisualLLMAnalyzer:
                     test_requirement, current_step, max_steps, self.action_history
                 )
             
-            # 获取LLM分析结果（第一阶段：粗定位）
+            # Get LLM analysis result (Phase 1: coarse localization)
             system_prompt = build_system_prompt_for_action()
             print("智能分析当前截图中...")
             response = self.llm_interface.get_action_decision(
@@ -67,13 +67,13 @@ class VisualLLMAnalyzer:
 
             action_result = self._parse_action_response(response)
 
-            # 第二阶段：细化定位（仅优化目标描述），并带重试
+            # Phase 2: refined localization (only optimize target description), with retry
             refine_attempts = 0
             if action_result.get("action_type") == "click":
-                # 仅在点击场景尝试细化
+                # Only attempt refinement in click scenarios
                 while refine_attempts < 2:
                     refine_attempts += 1
-                    # 构造细化提示词（不再请求位置信息，只优化目标描述）
+                    # Build refinement prompt (no longer request position information, only optimize target description)
                     refine_prompt = (
                         "请更清晰地描述要点击的目标控件（例如按钮文本、图标含义、附近标签），并严格返回规范化JSON。\n"
                         "要求：\n"

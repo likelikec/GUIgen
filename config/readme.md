@@ -1,84 +1,85 @@
-## 📄 配置文件 
+## 📄 Configuration Files
 
-### 1.LLM配置
-配置说明
+### 1. LLM Configuration
+Configuration Description
 
   - `test_engine`
-    - `max_steps`：最大执行步骤数。
-    - `step_timeout`：每步超时（秒）。
-    - `screenshot_interval`：截图间隔（秒）。
-    - `retry_count`：失败重试次数。
-    - `screenshots_dir`：截图保存目录。
-    - `reports_dir`：报告保存目录。
+    - `max_steps`: Maximum execution steps.
+    - `step_timeout`: Timeout per step (seconds).
+    - `screenshot_interval`: Screenshot interval (seconds).
+    - `retry_count`: Number of retries on failure.
+    - `screenshots_dir`: Screenshot save directory.
+    - `reports_dir`: Report save directory.
   - `llm`
-    - `api_key`：LLM API Key。
-    - `base_url`：LLM 基础 URL。
-      - OpenAI 官方：`https://api.openai.com/v1`
-      - DashScope 兼容：`https://dashscope.aliyuncs.com/compatible-mode/v1`
-    - `model`：模型名称（如 `gpt-4o-mini` 或 `qwen3-vl-plus`）。
-    - `temperature`：采样温度。
-    - `max_tokens`：最大输出 token 数。
-    - `timeout`：请求超时（秒）。
+    - `api_key`: LLM API Key.
+    - `base_url`: LLM base URL.
+      - OpenAI Official: `https://api.openai.com/v1`
+      - DashScope Compatible: `https://dashscope.aliyuncs.com/compatible-mode/v1`
+    - `model`: Model name (e.g., `gpt-4o-mini` or `qwen3-vl-plus`).
+    - `temperature`: Sampling temperature.
+    - `max_tokens`: Maximum output tokens.
+    - `timeout`: Request timeout (seconds).
   - `device`
-    - `default_device_id`：默认设备 ID（可空，自动选择）。
-    - `connection_timeout`：连接超时（秒）。
-    - `operation_delay`：操作后等待（秒）。
+    - `default_device_id`: Default device ID (can be empty, auto-select).
+    - `connection_timeout`: Connection timeout (seconds).
+    - `operation_delay`: Wait time after operations (seconds).
   - `logging`
-    - `level`：日志级别（`DEBUG`/`INFO`）。
-    - `file`：日志文件路径。
-    - `console`：是否输出到控制台。
+    - `level`: Log level (`DEBUG`/`INFO`).
+    - `file`: Log file path.
+    - `console`: Whether to output to console.
 
 
-### 2.测试需求配置
-为了支持基于LLM的场景驱动测试，测试需求以JSON文件描述。以下为字段说明：
+### 2. Test Requirements Configuration
+To support LLM-based scenario-driven testing, test requirements are described in JSON files. Field descriptions are as follows:
 
-- `test_id`：测试用例唯一标识（字符串）
-- `test_name`：测试名称（字符串）
-- `description`：测试说明（字符串）
-- `app`：被测应用信息（对象）
-  - `name`：应用名称（字符串）
-  - `package`：应用包名（字符串）
-  - `launch_activity`：应用启动Activity（字符串）
-- `test_scenario`：测试场景（对象）
-  - `objective`：测试目标（字符串）
-  - `steps`：测试步骤列表（数组，逐步说明）
-  - `test_data`：测试数据（对象，键值对，如联系人名称、输入文本等）
-  - `expected_result`：总体预期结果（字符串）
- - `test_scenario.success_criteria`：成功判定标准（数组，列举达成条件）
+- `test_id`: Unique test case identifier (string)
+- `test_name`: Test name (string)
+- `description`: Test description (string)
+- `app`: Application under test information (object)
+  - `name`: Application name (string)
+  - `package`: Application package name (string)
+  - `launch_activity`: Application launch Activity (string)
+- `test_scenario`: Test scenario (object)
+  - `objective`: Test objective (string)
+  - `steps`: Test step list (array, step-by-step instructions)
+  - `test_data`: Test data (object, key-value pairs, such as contact names, input text, etc.)
+  - `expected_result`: Overall expected result (string)
+ - `test_scenario.success_criteria`: Success criteria (array, listing achievement conditions)
 
-示例（精简展示）：
+Example (simplified display):
 
 ```json
 {
   "test_id": "test_001",
-  "test_name": "微信发送消息测试",
-  "description": "测试微信应用发送文本消息的功能",
+  "test_name": "WeChat Send Message Test",
+  "description": "Test WeChat application text message sending functionality",
   "app": {
-    "name": "微信",
+    "name": "WeChat",
     "package": "com.tencent.mm",
     "launch_activity": ".ui.LauncherUI"
   },
   "test_scenario": {
-    "objective": "向指定联系人发送一条文本消息",
+    "objective": "Send a text message to a specified contact",
     "steps": [
-      "打开微信应用",
-      "选择目标联系人",
-      "输入测试消息内容",
-      "发送消息",
-      "验证消息发送成功"
+      "Open WeChat application",
+      "Select target contact",
+      "Enter test message content",
+      "Send message",
+      "Verify message sent successfully"
     ],
     "test_data": {
-      "contact_name": "测试联系人",
-      "message_content": "这是一条测试消息"
+      "contact_name": "Test Contact",
+      "message_content": "This is a test message"
     },
-      "expected_result": "消息成功发送并显示在聊天界面中",
+      "expected_result": "Message successfully sent and displayed in chat interface",
       "success_criteria": [
-        "消息出现在聊天界面",
-        "消息状态显示为已发送",
-        "无错误提示"
+        "Message appears in chat interface",
+        "Message status shows as sent",
+        "No error prompts"
       ]
   }
 }
 ```
 
+```
 ```

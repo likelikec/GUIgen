@@ -4,18 +4,18 @@ import json
 import os
 from typing import Any, Dict, List, Optional, Union
 
-# 兼容新旧 OpenAI SDK 导入
+# Compatible import for both new and old OpenAI SDK
 try:
-    from openai import OpenAI  # 新版 SDK
+    from openai import OpenAI  # New SDK
     _NEW_OPENAI_SDK = True
 except Exception:
-    import openai as _openai_legacy  # 旧版 SDK
+    import openai as _openai_legacy  # Legacy SDK
     OpenAI = None
     _NEW_OPENAI_SDK = False
 
 
 class LLMInterface:
-    """LLM接口类，处理与OpenAI API的交互"""
+    """LLM interface class for handling interactions with OpenAI API"""
     
     def __init__(
         self,
@@ -36,20 +36,20 @@ class LLMInterface:
             temperature: 默认温度参数（可选）
             max_tokens: 默认最大token数（可选）
         """
-        # 强制要求使用配置文件提供的API密钥，移除环境变量默认行为
+        # Force requirement to use API key from config file, remove environment variable default behavior
         if not api_key:
-            raise ValueError("缺少LLM api_key，请在config.json的llm中配置")
+            raise ValueError("API key is required")
+        
         if _NEW_OPENAI_SDK:
             self.client = OpenAI(api_key=api_key, base_url=base_url)
         else:
-            # 旧版SDK使用全局配置
+            # Legacy SDK uses global configuration
             _openai_legacy.api_key = api_key
             if base_url:
-                # 阿里通义兼容模式的base_url
-                _openai_legacy.base_url = base_url
-            self.client = _openai_legacy
-
-        # 仅在提供时保存默认参数，不再内置库默认值
+                # Alibaba Tongyi compatible mode base_url
+                _openai_legacy.api_base = base_url
+        
+        # Only save default parameters when provided, no longer use built-in library defaults
         self.default_model = model
         self.default_temperature = temperature
         self.default_max_tokens = max_tokens
@@ -85,7 +85,7 @@ class LLMInterface:
             image = message.get("image")
             text = message.get("text")
 
-            # 允许纯文本或纯图片消息；同时存在则为图文消息
+            # Allow pure text or pure image messages; if both exist, it's a multimodal message
             if image is None and text is None:
                 raise ValueError("消息字典必须至少包含'text'或'image'字段")
 
@@ -169,7 +169,7 @@ class LLMInterface:
             包含响应内容和token使用信息的字典
         """
         try:
-            # 严格使用提供或配置的模型，不再退回内置默认
+            # Strictly use provided or configured model, no longer fall back to built-in defaults
             use_model = model if model is not None else self.default_model
             if not use_model:
                 raise RuntimeError("LLM模型未配置，请在config.json的llm.model中设置")
@@ -187,7 +187,7 @@ class LLMInterface:
             elif self.default_max_tokens is not None:
                 params["max_tokens"] = self.default_max_tokens
 
-            # 选择超时值（优先使用调用传入，其次使用默认配置）
+            # Select timeout value (prioritize call parameter, then use default configuration)
             use_timeout = timeout if timeout is not None else self.default_timeout
 
             if _NEW_OPENAI_SDK:
@@ -202,7 +202,7 @@ class LLMInterface:
                     "total_tokens": response.usage.total_tokens
                 }
             else:
-                # 旧版 SDK 使用 request_timeout 参数
+                # Legacy SDK uses request_timeout parameter
                 if use_timeout is not None:
                     response = self.client.ChatCompletion.create(**params, request_timeout=use_timeout)
                 else:
@@ -268,33 +268,31 @@ class LLMInterface:
 
 
 class ChatContext:
-    """对话上下文管理类"""
+    """Chat context management class"""
     
     def __init__(self):
-        self.user_messages: List[Union[str, Dict[str, Any]]] = []
-        self.assistant_messages: List[str] = []
-        self.system_message: Optional[str] = None
-    
-    def add_user_message(self, message: Union[str, Dict[str, Any]]):
-        """添加用户消息"""
-        self.user_messages.append(message)
-    
-    def add_assistant_message(self, message: str):
-        """添加助手消息"""
-        self.assistant_messages.append(message)
-    
-    def set_system_message(self, message: str):
-        """设置系统消息"""
-        self.system_message = message
-    
-    def clear(self):
-        """清空上下文"""
-        self.user_messages.clear()
-        self.assistant_messages.clear()
+        self.messages = []
         self.system_message = None
     
-    def get_messages(self) -> List[Dict[str, Any]]:
-        """获取格式化的消息列表"""
+    def add_user_message(self, content: str):
+        """Add user message"""
+        self.messages.append({"role": "user", "content": content})
+    
+    def add_assistant_message(self, content: str):
+        """Add assistant message"""
+        self.messages.append({"role": "assistant", "content": content})
+    
+    def set_system_message(self, content: str):
+        """Set system message"""
+        self.system_message = content
+    
+    def clear(self):
+        """Clear context"""
+        self.messages = []
+        self.system_message = None
+    
+    def get_messages(self) -> List[Dict[str, str]]:
+        """Get formatted message list"""
         llm = LLMInterface()
         return llm.build_messages(
             self.user_messages,

@@ -1,30 +1,30 @@
 {
   "test_id": "qqmusic_search_bjhyn_001",
-  "test_name": "QQ音乐搜索《北京欢迎你》",
-  "description": "在QQ音乐中搜索歌曲《北京欢迎你》，并验证搜索结果显示。",
+  "test_name": "QQ Music Search 'Beijing Welcomes You'",
+  "description": "Search for the song 'Beijing Welcomes You' in QQ Music and verify the search results display.",
   "app": {
-    "name": "QQ音乐",
+    "name": "QQ Music",
     "package": "com.tencent.qqmusic",
     "launch_activity": ".activity.AppStarterActivity"
   },
   "test_scenario": {
-    "objective": "在QQ音乐中搜索歌曲《北京欢迎你》",
+    "objective": "Search for the song 'Beijing Welcomes You' in QQ Music",
     "steps": [
-      "打开QQ音乐应用",
-      "点击搜索入口（首页或底部导航中的搜索）",
-      "在搜索框输入：北京欢迎你",
-      "提交搜索（点击搜索按钮或键盘回车）",
-      "等待加载并查看搜索结果列表",
-      "验证结果中出现歌曲《北京欢迎你》"
+      "Open QQ Music application",
+      "Click search entry (search in homepage or bottom navigation)",
+      "Enter in search box: Beijing Welcomes You",
+      "Submit search (click search button or keyboard enter)",
+      "Wait for loading and view search results list",
+      "Verify that the song 'Beijing Welcomes You' appears in results"
     ],
     "test_data": {
-      "query": "北京欢迎你"
+      "query": "Beijing Welcomes You"
     },
-    "expected_result": "搜索结果包含歌曲《北京欢迎你》且可点击进入详情",
+    "expected_result": "Search results contain the song 'Beijing Welcomes You' and can be clicked to enter details",
     "success_criteria": [
-      "页面显示搜索结果",
-      "至少有一条结果标题包含‘北京欢迎你’",
-      "无错误弹窗或加载失败提示"
+      "Page displays search results",
+      "At least one result title contains 'Beijing Welcomes You'",
+      "No error popups or loading failure prompts"
     ]
   }
 }

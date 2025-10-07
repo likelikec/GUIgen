@@ -25,7 +25,7 @@ def load_config(config_path: str = "config/config.json") -> dict:
 def load_scenario(scenario_dir: Path) -> dict:
     scenario_path = scenario_dir / "scenario.json"
     if not scenario_path.exists():
-        raise FileNotFoundError(f"未找到场景文件: {scenario_path}")
+        raise FileNotFoundError(f"Scenario file not found: {scenario_path}")
     with scenario_path.open("r", encoding="utf-8") as f:
         return json.load(f)
 
@@ -34,14 +34,14 @@ def build_test_requirement(scenario: dict) -> dict:
     return {
         "test_id": scenario.get("test_id", "static_case"),
         "test_name": scenario.get("test_name", "Static Visual Test"),
-        "description": scenario.get("description", "静态截图操作预测与完成度检查"),
+        "description": scenario.get("description", "Static screenshot operation prediction and completion check"),
         "app": scenario.get("app", {"name": "Unknown", "platform": "android"}),
         "test_scenario": scenario.get("test_scenario", {})
     }
 
 
 def find_step_images(steps_dir: Path):
-    """仅收集纯数字命名的步骤图片（01.png、02.jpg 等），严格按数字排序。"""
+    """Only collect step images with pure numeric names (01.png, 02.jpg, etc.), strictly sorted by number."""
     if not steps_dir.exists():
         return []
     import re
@@ -100,32 +100,32 @@ def write_report(report_path: Path, scenario: dict, predictions: list, completio
             for c in achieved:
                 lines.append(f"  - {c}\n")
         if missing:
-            lines.append("- 未达成标准:\n")
+            lines.append("- Missing criteria:\n")
             for c in missing:
                 lines.append(f"  - {c}\n")
         if completion.get('next_suggestion'):
-            lines.append(f"- 建议下一步: {completion['next_suggestion']}\n")
+            lines.append(f"- Next suggestion: {completion['next_suggestion']}\n")
     else:
-        lines.append("- 未进行完成度检查（无可用截图）。\n")
+        lines.append("- No completion check performed (no available screenshots).\n")
 
     report_path.write_text("".join(lines), encoding="utf-8")
 
 
 def main():
-    parser = argparse.ArgumentParser(description="静态截图操作预测与报告生成")
-    parser.add_argument("--scenario", type=str, default=str(Path("static_tests/ctrip_flight_booking")), help="场景目录路径")
-    parser.add_argument("--api-key", type=str, default=None, help="可选，直传 API Key（OpenAI/DashScope）")
-    parser.add_argument("--base-url", type=str, default=None, help="可选，自定义 Base URL（如 DashScope 兼容模式）")
-    parser.add_argument("--model", type=str, default=None, help="可选，模型名称（如 qwen3-vl-plus）")
+    parser = argparse.ArgumentParser(description="Static screenshot operation prediction and report generation")
+    parser.add_argument("--scenario", type=str, default=str(Path("static_tests/ctrip_flight_booking")), help="Scenario directory path")
+    parser.add_argument("--api-key", type=str, default=None, help="Optional, direct API Key (OpenAI/DashScope)")
+    parser.add_argument("--base-url", type=str, default=None, help="Optional, custom Base URL (e.g., DashScope compatibility mode)")
+    parser.add_argument("--model", type=str, default=None, help="Optional, model name (e.g., qwen3-vl-plus)")
     args = parser.parse_args()
 
     ensure_repo_on_path()
 
-    # 延迟导入以确保路径已设置
+    # Delayed import to ensure path is set
     from core.llm_interface import LLMInterface
     from core.visual_llm import VisualLLMAnalyzer
 
-    # 加载配置（支持从 config/config.json 读取默认 LLM 参数）
+    # Load configuration (supports reading default LLM parameters from config/config.json)
     config = load_config()
     llm_cfg = (config or {}).get("llm", {})
 
@@ -136,12 +136,12 @@ def main():
     steps_dir = scenario_dir / "steps"
     images = find_step_images(steps_dir)
 
-    # 解析 LLM 参数：命令行优先，其次配置文件，最后环境变量（由 LLMInterface 处理）
+    # Parse LLM parameters: command line first, then config file, finally environment variables (handled by LLMInterface)
     api_key = args.api_key if args.api_key is not None else llm_cfg.get("api_key")
     base_url = args.base_url if args.base_url is not None else llm_cfg.get("base_url")
     model = args.model if args.model is not None else llm_cfg.get("model")
 
-    # 准备LLM接口
+    # Prepare LLM interface
     llm = LLMInterface(api_key=api_key, base_url=base_url, model=model)
     visual = VisualLLMAnalyzer(llm)
 
@@ -149,7 +149,7 @@ def main():
     missing_images = []
 
     if not images:
-        # 记录期望的文件名，提示用户补充（按纯数字命名）
+        # Record expected file names, prompt user to supplement (named with pure numbers)
         steps_def = test_requirement.get("test_scenario", {}).get("steps", [])
         count = len(steps_def) if steps_def else 6
         expected = [f"{i:02d}.png" for i in range(1, count + 1)]
@@ -171,8 +171,8 @@ def main():
             except Exception as e:
                 predictions.append({
                     "action_type": "unknown",
-                    "description": f"分析失败: {e}",
-                    "reasoning": "在静态模式下分析该截图时发生错误",
+                    "description": f"Analysis failed: {e}",
+                    "reasoning": "Error occurred while analyzing this screenshot in static mode",
                     "success": False
                 })
 
@@ -186,16 +186,16 @@ def main():
                 "completed": False,
                 "success": False,
                 "confidence": 0.0,
-                "reasoning": f"完成度检查失败: {e}",
+                "reasoning": f"Completion check failed: {e}",
             }
 
-    # 输出结果
+    # Output results
     (scenario_dir / "predictions.json").write_text(
         json.dumps(predictions, ensure_ascii=False, indent=2), encoding="utf-8"
     )
     write_report(scenario_dir / "report.md", scenario, predictions, completion, missing_images)
 
-    print(f"预测与报告已生成：{scenario_dir}")
+    print(f"Predictions and report generated: {scenario_dir}")
 
 
 if __name__ == "__main__":

@@ -8,7 +8,7 @@
     "reports_dir": "reports"
   },
   "llm": {
-    "api_key": "sk-e0ac3ddaaece48498c876c5639df0f7c",
+    "api_key": "-",
     "base_url": "https://dashscope.aliyuncs.com/compatible-mode/v1",
     "model": "qwen-vl-plus",
     "temperature": 0.1,

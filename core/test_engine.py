@@ -12,14 +12,14 @@ from .visual_llm import VisualLLMAnalyzer
 
 
 class TestEngine:
-    """测试执行引擎"""
+    """Test execution engine"""
     
     def __init__(self, config: Optional[Dict[str, Any]] = None):
         """
-        初始化测试引擎
+        Initialize test engine
         
         Args:
-            config: 配置参数
+            config: Configuration parameters
         """
         self.raw_config = config or {}
         self.device_manager = None
@@ -30,13 +30,13 @@ class TestEngine:
         self.step_count = 0
         self.max_retry_count = 3
 
-        # 添加点击历史记录，用于检测重复点击
-        self.click_history = []  # 存储最近的点击坐标
-        self.max_click_history = 5  # 最多记录5次点击
-        self.repeat_click_threshold = 2  # 连续2次相同位置视为重复点击（降低阈值）
-        self.last_screenshot_hash = None  # 用于检测界面变化
+        # Add click history record for detecting repeated clicks
+        self.click_history = []  # Store recent click coordinates
+        self.max_click_history = 5  # Record at most 5 clicks
+        self.repeat_click_threshold = 2  # 2 consecutive clicks at same position considered repeated (lowered threshold)
+        self.last_screenshot_hash = None  # For detecting interface changes
 
-        # 强制使用 config.json 的 test_engine 配置，不再使用默认值
+        # Force use of config.json test_engine configuration, no longer use default values
         engine_conf = self.raw_config.get("test_engine", {}) if isinstance(self.raw_config, dict) else {}
         required_keys = [
             "max_steps",

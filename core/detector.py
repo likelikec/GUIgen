@@ -6,13 +6,13 @@ from typing import Tuple, List, Dict, Any, Optional
 
 class WidgetDetector:
     """
-    轻量部件检测器（本地实现，替代 ScenGen）。
+    Lightweight widget detector (local implementation, replacing ScenGen).
 
-    - 输入：截图路径。
-    - 输出：标注截图路径（原图）、缩放比（1.0）、元素列表（含文本与像素边界）。
-    - 元素字段与 TestEngine 现有逻辑兼容：
-      column_min/x1, column_max/x2, row_min/y1, row_max/y2, text_content。
-    - 通过读取 temp/ 下最新的 window_dump_*.xml（uiautomator dump）来构造元素。
+    - Input: Screenshot path.
+    - Output: Annotated screenshot path (original image), resize ratio (1.0), element list (with text and pixel boundaries).
+    - Element fields compatible with TestEngine existing logic:
+      column_min/x1, column_max/x2, row_min/y1, row_max/y2, text_content.
+    - Constructs elements by reading the latest window_dump_*.xml (uiautomator dump) from temp/ directory.
     """
 
     def detect(self, screenshot_path: str) -> Tuple[str, float, List[Dict[str, Any]]]:
@@ -74,7 +74,7 @@ class WidgetDetector:
         return elements
 
     def _parse_bounds(self, bounds: str) -> Optional[Tuple[int, int, int, int]]:
-        # 形如 "[x1,y1][x2,y2]"
+        # Format like "[x1,y1][x2,y2]"
         m = re.match(r"\[(\d+),(\d+)\]\[(\d+),(\d+)\]", bounds)
         if not m:
             return None

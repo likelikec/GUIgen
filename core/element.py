@@ -20,7 +20,7 @@ class ElementRect:
 
 @dataclass
 class Element:
-    """通用元素对象，统一承载定位信息与中心点。"""
+    """Generic element object that uniformly carries positioning information and center point."""
     rect: ElementRect
     center: Tuple[int, int]
 
@@ -35,5 +35,5 @@ class Element:
 
     @staticmethod
     def from_point(x: int, y: int) -> "Element":
-        # 点元素（无矩形），用于坐标点击场景
+        # Point element (no rectangle), used for coordinate click scenarios
         return Element(ElementRect(x, y, x, y), (int(x), int(y)))

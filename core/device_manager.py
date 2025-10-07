@@ -6,40 +6,40 @@ from typing import Optional, Tuple, Dict, Any, List
 import json
 import re
 try:
-    from pypinyin import lazy_pinyin  # 中文转拼音（兜底）
+    from pypinyin import lazy_pinyin  # Chinese to pinyin conversion (fallback)
 except Exception:
     lazy_pinyin = None
 
 
 class DeviceManager:
-    """Android设备管理类"""
+    """Android device management class"""
     
     def __init__(self, device_id: Optional[str] = None, device_config: Optional[Dict[str, Any]] = None):
         """
-        初始化设备管理器
+        Initialize device manager
         
         Args:
-            device_id: 指定设备ID，如果为None则使用第一个可用设备
-            device_config: 设备相关配置（需包含 operation_delay 与 connection_timeout）
+            device_id: Specified device ID, if None use the first available device
+            device_config: Device-related configuration (must include operation_delay and connection_timeout)
         """
         if device_config is None:
-            raise ValueError("缺少device配置，请在config.json的device中设置")
+            raise ValueError("Missing device configuration, please set in config.json device section")
         if "operation_delay" not in device_config or "connection_timeout" not in device_config:
-            raise ValueError("device配置缺少必填项: operation_delay 或 connection_timeout")
+            raise ValueError("Device configuration missing required items: operation_delay or connection_timeout")
 
         self.operation_delay = float(device_config.get("operation_delay"))
         self.connection_timeout = int(device_config.get("connection_timeout"))
         
-        # 设备属性
-        self.resize_ratio = device_config.get("resize_ratio", 1.0)  # 坐标缩放比例
-        self.rotate_angle = device_config.get("rotate_angle", 0)   # 屏幕旋转角度
+        # Device properties
+        self.resize_ratio = device_config.get("resize_ratio", 1.0)  # Coordinate scaling ratio
+        self.rotate_angle = device_config.get("rotate_angle", 0)   # Screen rotation angle
 
         self.device_id = self._get_device_id(device_id)
         self.screen_size = self._get_screen_size()
         self.width, self.height = self.screen_size
         
     def _get_device_id(self, device_id: Optional[str] = None) -> str:
-        """获取设备ID，按connection_timeout重试等待设备连接"""
+        """Get device ID, retry waiting for device connection according to connection_timeout"""
         start = time.time()
         while True:
             try:
@@ -50,14 +50,15 @@ class DeviceManager:
                     text=True,
                     check=True
                 )
-                lines = result.stdout.strip().split('\n')[1:]  # 跳过标题行
+                lines = result.stdout.strip().split('\n')[1:]  # Skip header line
                 devices = []
                 for line in lines:
-                    if '\t' in line:
-                        device = line.split('\t')[0]
-                        status = line.split('\t')[1]
-                        if status == 'device':  # 只考虑已连接的设备
-                            devices.append(device)
+                    if line.strip():
+                        parts = line.split()
+                        if len(parts) >= 2:
+                            device_id_found, status = parts[0], parts[1]
+                            if status == 'device':  # Only consider connected devices
+                                devices.append(device_id_found)
                 if devices:
                     if device_id is None:
                         return devices[0]
@@ -585,7 +586,7 @@ class DeviceManager:
             return False
 
     def get_screen_size(self) -> Optional[tuple]:
-        """获取屏幕分辨率 (width, height)"""
+        """Get screen size (width, height)"""
         return self.screen_size
 
     def focus_top_input_area(self) -> bool:

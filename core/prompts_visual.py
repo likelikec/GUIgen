@@ -1,11 +1,11 @@
 """
-视觉LLM提示词模板与构建方法
-将提示词与分析器逻辑解耦，便于维护与复用
+Visual LLM prompt templates and construction methods
+Decouples prompts from analyzer logic for easier maintenance and reuse
 """
 from typing import Dict, Any, List
 
 
-# 旧方法已完全移除：请使用以下新方法
+# Old methods have been completely removed: please use the following new methods
 # - build_action_analysis_prompt_with_steps
 # - build_action_analysis_prompt_no_steps
 
@@ -16,7 +16,7 @@ def build_action_analysis_prompt_with_steps(
     max_steps: int,
     action_history: List[Dict[str, Any]]
 ) -> str:
-    """构建：有步骤场景的操作分析提示词（严格提取）"""
+    """Build: Action analysis prompt for scenarios with steps (strict extraction)"""
     app_name = test_requirement.get("app", {}).get("name", "未知应用")
     objective = test_requirement.get("test_scenario", {}).get("objective", "")
     steps = test_requirement.get("test_scenario", {}).get("steps", [])
@@ -86,7 +86,7 @@ def build_action_analysis_prompt_no_steps(
     max_steps: int,
     action_history: List[Dict[str, Any]]
 ) -> str:
-    """构建：无步骤场景的操作分析提示词（自主规划）"""
+    """Build: Action analysis prompt for scenarios without steps (autonomous planning)"""
     app_name = test_requirement.get("app", {}).get("name", "未知应用")
     objective = test_requirement.get("test_scenario", {}).get("objective", "")
 
@@ -131,7 +131,7 @@ def build_action_analysis_prompt_no_steps(
     return prompt
 
 def build_system_prompt_for_action() -> str:
-    """构建系统提示词：严格JSON；click 不返回位置信息"""
+    """Build system prompt: strict JSON; click does not return position information"""
     return (
         "你是严格遵循指令格式的助手。所有回复必须仅包含一个JSON对象，字段与取值严格匹配用户消息中提供的架构。"
         "不要输出任何解释、注释、代码块围栏或额外文本。"
@@ -140,7 +140,7 @@ def build_system_prompt_for_action() -> str:
     )
 
 def build_system_prompt_for_completion() -> str:
-    """构建系统提示词：强制JSON用于完成度检查"""
+    """Build system prompt: enforce JSON for completion check"""
     return (
         "你是严格遵循指令格式的助手。所有回复必须仅包含一个JSON对象，字段必须与用户消息要求一致。"
         "不要输出任何解释、注释、代码块围栏或额外文本。"
@@ -148,7 +148,7 @@ def build_system_prompt_for_completion() -> str:
 
 
 def build_completion_check_prompt(test_requirement: Dict[str, Any]) -> str:
-    """构建完成检查提示词"""
+    """Build completion check prompt"""
     objective = test_requirement.get("test_scenario", {}).get("objective", "")
     expected_result = test_requirement.get("test_scenario", {}).get("expected_result", "")
     success_criteria = test_requirement.get("test_scenario", {}).get("success_criteria", [])

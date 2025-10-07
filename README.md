@@ -20,6 +20,7 @@ GUIgen/
 ├── screenshots/           # Screenshot storage
 └── main.py               # Main program entry
 
+```
 
 ## 2. Key Technical Features
 
@@ -203,7 +204,6 @@ python main.py test_file.json \
 ```
 
 
-
 ## Future Development Directions
 
 - **Multi-device Parallel Testing**: Support multiple devices executing test tasks simultaneously
@@ -212,4 +212,21 @@ python main.py test_file.json \
 - **Performance Optimization**: Further improve LLM calling efficiency and operation accuracy
 
 
+## Troubleshooting
+
+### Common Issues
+1. **Device Connection Failure**: Check ADB connection and USB debugging settings
+2. **Application Launch Failure**: Confirm package name and Activity name are correct
+3. **LLM Call Failure**: Check API key and network connection
+4. **Element Location Failure**: Check UIAutomator service status
+
+### Debugging Tips
+1. View detailed log output
+2. Check screenshot files to confirm interface status
+3. Verify test configuration file format
+4. Use static tests to verify basic functionality
+
+## Contributing Guidelines
+
+Welcome to submit Issues and Pull Requests to improve the project.
 ```
